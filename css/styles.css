@@ -176,8 +176,7 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url('../assets/hero-front.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: scroll;
-    will-change:transform;
+    background-attachment: fixed;
     z-index: -2;
 }
 
@@ -214,6 +213,16 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
     font-weight: 600;
+    background: transparent !important;
+    border: 2px solid var(--red) !important;
+    color: var(--white) !important;
+}
+
+.hero-cta:hover {
+    background: var(--red) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 57, 53, 0.4);
 }
 
 /* Button Styles */

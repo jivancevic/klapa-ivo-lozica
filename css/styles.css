@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/hero-front.jpg');
+    background-image: url('../assets/hero-front.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -586,14 +586,39 @@ section {
 
 /* Contact Section */
 .contact {
-    background: var(--black);
+    position: relative;
     color: var(--white);
+    overflow: hidden;
+}
+
+.contact-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/hero-back.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
 }
 
 .contact-content {
+    position: relative;
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+    z-index: 1;
 }
 
 .contact-title {
@@ -653,7 +678,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../assets/hero-back.jpg');
+    background-image: url('../assets/hero-back.webp');
     background-size: cover;
     background-position: center;
     z-index: -2;

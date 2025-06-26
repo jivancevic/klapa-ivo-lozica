@@ -17,9 +17,9 @@ const translations = {
         nav_contact: "Contact",
 
         // Hero Section
-        hero_slogan: "Experience Dalmatian Acapella Heritage",
+        hero_slogan: "Klapa Ivo Lozica",
         hero_subtitle: "Authentic Croatian klapa performances in the heart of historic Korčula",
-        hero_cta: "Book Now",
+        hero_cta: "Contact Us",
 
         // About Section
         about_title: "About Klapa Ivo Lozica",
@@ -91,9 +91,9 @@ const translations = {
         nav_contact: "Kontakt",
 
         // Hero Section
-        hero_slogan: "Doživite dalmatinsku klapsku baštinu",
-        hero_subtitle: "Autentični hrvatski klapski nastupi u srcu povijesne Korčule",
-        hero_cta: "Rezervirajte sada",
+        hero_slogan: "Klapa Ivo Lozica",
+        hero_subtitle: "Autentični klapski nastupi u srcu povijesne Korčule",
+        hero_cta: "Kontaktirajte nas",
 
         // About Section
         about_title: "O Klapi Ivo Lozica",

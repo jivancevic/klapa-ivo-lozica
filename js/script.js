@@ -237,12 +237,21 @@ function updateCarousel() {
     }
 }
 
-// ⇢ place it anywhere above the call or at the end of the file
-function initHeroParallax() {
+// Hero parallax effect (disabled on mobile to prevent zoom issues)
+function initHeroParallax() {    
     const heroBg = document.querySelector('.hero-background');
     if (!heroBg) return;
 
-    const speed = 0.15;      // tune this value
+    // Check if device is mobile
+    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Disable parallax on mobile devices to prevent zoom issues
+    if (isMobile) {
+        heroBg.style.transform = 'translateY(0px)';
+        return;
+    }
+
+    const speed = 0.15;
     let ticking = false;
 
     window.addEventListener('scroll', () => {

@@ -444,6 +444,38 @@ function updateSEOTags(lang) {
     });
 }
 
+// Prevent horizontal scrolling on mobile
+function preventHorizontalScrolling() {
+    let startX = 0;
+    let startY = 0;
+    
+    document.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', function(e) {
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const diffX = Math.abs(currentX - startX);
+        const diffY = Math.abs(currentY - startY);
+        
+        // If horizontal movement is greater than vertical and we're not in carousel
+        if (diffX > diffY && diffX > 10) {
+            const target = e.target;
+            const isCarousel = target.closest('.music-carousel') || target.closest('.gallery-carousel');
+            
+            // Prevent horizontal scrolling unless it's a carousel
+            if (!isCarousel) {
+                e.preventDefault();
+            }
+        }
+    }, { passive: false });
+}
+
+// Initialize prevention of horizontal scrolling
+document.addEventListener('DOMContentLoaded', preventHorizontalScrolling);
+
 // Export functions for global access
 window.scrollToSection = scrollToSection;
 window.trackEvent = trackEvent;

@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
-    will-change:transform;
+    will-change: transform;
     z-index: -2;
 }
 
@@ -314,6 +314,8 @@ section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    width: 100%;
+    overflow: hidden;
 }
 
 .gallery-item {
@@ -917,5 +919,45 @@ img:not([src]) {
     
     .hero-background {
         background-attachment: scroll;
+    }
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+    /* Fix hero background zoom issue on mobile */
+    .hero-background {
+        transform: none !important;
+        top: 0;
+        height: 100vh;
+        background-attachment: scroll;
+    }
+    
+    /* Prevent horizontal scrolling */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    /* Ensure all containers stay within viewport */
+    .container,
+    .nav-container,
+    .about-content,
+    .program-features,
+    .gallery-grid,
+    .timeline-container {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Make sure grid items don't overflow */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .program-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 }

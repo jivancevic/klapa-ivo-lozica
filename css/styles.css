@@ -402,16 +402,18 @@ section {
     position: absolute;
     width: 25px;
     height: 25px;
-    right: -12px;
+    right: -14.5px;
     background-color: var(--sky-blue);
     border: 4px solid var(--white);
     top: 50%;
+    transform: translateY(-50%);
     border-radius: 50%;
     z-index: 1;
 }
 
 .timeline-item:nth-child(even)::after {
-    left: -12px;
+    left: -14.5px;
+    right: auto;
 }
 
 .timeline-year {
@@ -457,6 +459,39 @@ section {
     color: var(--dark-gray);
     line-height: 1.6;
 }
+
+/* === MOBILE LAYOUT FOR TIMELINE === */
+@media (max-width: 768px) {
+
+  /* Shift the blue spine from center to 20 px left */
+  .timeline::before{
+    left: 20px;
+    margin: 0;
+  }
+
+  /* Every item spans 100 % and starts flush left */
+  .timeline-item{
+    width: 100%;
+    left: 0 !important;          /* override 0 / 50 % alternating */
+    padding-left: 60px;          /* space for the spine + dot */
+    padding-right: 0;
+  }
+
+  /* Dot now sits on the left edge */
+  .timeline-item::after{
+    left: 12px;
+    right: auto;
+  }
+
+  /* Year label aligns just to the right of the dot */
+  .timeline-year{
+    left: 0;
+    right: auto;
+    transform: translate(-110%, -50%);   /* pulls it slightly left of the dot */
+    text-align: right;
+  }
+}
+
 
 /* Listen Section */
 .listen {

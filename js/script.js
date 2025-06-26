@@ -252,8 +252,8 @@ function initializeScrollEffects() {
         });
     }, observerOptions);
 
-    // Observe elements that need scroll animations
-    const elementsToObserve = document.querySelectorAll('.timeline-item, .feature-card');
+    // Observe elements that need scroll animations (excluding timeline items as they use AOS)
+    const elementsToObserve = document.querySelectorAll('.feature-card:not([data-aos])');
     elementsToObserve.forEach(el => {
         observer.observe(el);
     });

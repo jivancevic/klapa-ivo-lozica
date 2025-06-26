@@ -72,18 +72,29 @@ function initializeNavigation() {
     window.addEventListener('scroll', updateNavbarOnScroll);
 }
 
-// Update navbar appearance on scroll
+// Update navbar appearance and visibility on scroll
 function updateNavbarOnScroll() {
     const navbar = document.getElementById('navbar');
+    const heroSection = document.getElementById('hero');
     const scrollTop = window.pageYOffset;
-
-    if (navbar) {
-        if (scrollTop > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+    
+    if (navbar && heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        
+        // Show navbar only after scrolling past hero section
+        if (scrollTop > heroHeight - 100) {
+            navbar.classList.add('visible');
+            
+            // Additional styling for deeper scroll
+            if (scrollTop > heroHeight + 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('visible');
         }
     }
 }

@@ -32,6 +32,9 @@
     <!-- AOS Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -40,7 +43,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <span data-i18n="nav_brand">Klapa Ivo Lozica</span>
+                <img src="assets/logo.webp" alt="Klapa Ivo Lozica" class="nav-logo">
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
@@ -130,11 +133,12 @@
                     <h3 class="feature-title" data-i18n="feature_venue_title">Historic Venues</h3>
                     <p class="feature-description" data-i18n="feature_venue_desc">Performances in historic Old-Town Korčula or your chosen custom venue</p>
                 </div>
-            </div>
-            <div class="program-note" data-aos="fade-up" data-aos-delay="400">
-                <div class="note-content">
-                    <i class="fas fa-language"></i>
-                    <p data-i18n="program_note">English narration included to enhance the cultural experience for international guests</p>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="feature-title" data-i18n="feature_narration_title">English Narration</h3>
+                    <p class="feature-description" data-i18n="program_note">English narration included to enhance the cultural experience for international guests</p>
                 </div>
             </div>
         </div>

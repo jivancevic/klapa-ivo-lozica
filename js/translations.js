@@ -37,6 +37,7 @@ const translations = {
         feature_timing_desc: "Morning serenades to evening concerts - we adapt to your schedule",
         feature_venue_title: "Historic Venues",
         feature_venue_desc: "Performances in historic Old-Town Korčula or your chosen custom venue",
+        feature_narration_title: "English Narration",
         program_note: "English narration included to enhance the cultural experience for international guests",
 
         // Awards Timeline
@@ -111,6 +112,7 @@ const translations = {
         feature_timing_desc: "Od jutarnjih serenada do večernjih koncerata - prilagođavamo se vašem rasporedu",
         feature_venue_title: "Povijesni prostori",
         feature_venue_desc: "Nastupi u povijesnoj Staroj jezgri Korčule ili na vašoj odabranoj lokaciji",
+        feature_narration_title: "Engleska naracija",
         program_note: "Uključena je naracija na engleskom jeziku za poboljšanje kulturnog iskustva međunarodnih gostiju",
 
         // Awards Timeline

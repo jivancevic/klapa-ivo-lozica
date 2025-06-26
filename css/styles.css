@@ -169,10 +169,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-background {
     position: absolute;
-    top: 0;
+    top: -10vh;            /* start 10 % higher */
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120vh;         /* 20 % taller – room to slide */
     background-image: url('../assets/hero-front.webp');
     background-size: cover;
     background-position: center;
@@ -213,6 +213,16 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
     font-weight: 600;
+    background: transparent !important;
+    border: 2px solid var(--red) !important;
+    color: var(--white) !important;
+}
+
+.hero-cta:hover {
+    background: var(--red) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(229, 57, 53, 0.4);
 }
 
 /* Button Styles */
@@ -408,23 +418,25 @@ section {
     left: 50%;
 }
 
-.timeline-item::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -14.5px;
-    background-color: var(--sky-blue);
-    border: 4px solid var(--white);
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    z-index: 1;
+/* === timeline dots, perfectly centred on the 4-px spine === */
+.timeline-item::after{
+    content:'';
+    position:absolute;
+    width:25px;               /* inner circle */
+    height:25px;
+    background:var(--sky-blue);
+    border:4px solid var(--white);   /* makes total size 33 × 33 px */
+    top:50%;
+    left:100%;                /* start at the item’s right edge … */
+    transform:translate(-50%,-50%);  /* … then shift left/up by ½ dot */
+    border-radius:50%;
+    z-index:1;
 }
 
-.timeline-item:nth-child(even)::after {
-    left: -14.5px;
-    right: auto;
+/* same rule for even items, mirrored */
+.timeline-item:nth-child(even)::after{
+    left:0;                   /* item’s left edge */
+    transform:translate(-50%,-50%);
 }
 
 .timeline-year {
@@ -438,11 +450,11 @@ section {
 }
 
 .timeline-item:nth-child(odd) .timeline-year {
-    right: -80px;
+    right: -120px;
 }
 
 .timeline-item:nth-child(even) .timeline-year {
-    left: -80px;
+    left: -120px;
 }
 
 .timeline-content {
@@ -469,38 +481,6 @@ section {
 .timeline-content p {
     color: var(--dark-gray);
     line-height: 1.6;
-}
-
-/* === MOBILE LAYOUT FOR TIMELINE === */
-@media (max-width: 768px) {
-
-  /* Shift the blue spine from center to 20 px left */
-  .timeline::before{
-    left: 20px;
-    margin: 0;
-  }
-
-  /* Every item spans 100 % and starts flush left */
-  .timeline-item{
-    width: 100%;
-    left: 0 !important;          /* override 0 / 50 % alternating */
-    padding-left: 60px;          /* space for the spine + dot */
-    padding-right: 0;
-  }
-
-  /* Dot now sits on the left edge */
-  .timeline-item::after{
-    left: 12px;
-    right: auto;
-  }
-
-  /* Year label aligns just to the right of the dot */
-  .timeline-year{
-    left: 0;
-    right: auto;
-    transform: translate(-110%, -50%);   /* pulls it slightly left of the dot */
-    text-align: right;
-  }
 }
 
 
@@ -785,25 +765,6 @@ section {
         grid-template-columns: 1fr;
     }
     
-    .timeline::before {
-        left: 20px;
-    }
-    
-    .timeline-item {
-        width: 100%;
-        padding-left: 4rem;
-        padding-right: 0;
-    }
-    
-    .timeline-item::after {
-        left: 8px;
-    }
-    
-    .timeline-year {
-        left: -60px !important;
-        font-size: 1.5rem;
-    }
-    
     .timeline-content {
         margin: 0;
     }
@@ -819,6 +780,30 @@ section {
     
     .contact-item {
         justify-content: flex-start;
+    }
+
+    /* spine at 20 px from edge */
+    .timeline::before{
+      left:20px;
+      margin:0;
+    }
+
+    /* full-width cards */
+    .timeline-item {
+      width: 100%;
+      left: 0 !important;
+      padding-left: 70px;             /* 33-px dot + 15-20 px gap */
+    }
+
+    /* perfectly centred dot */
+    .timeline-item::after, .timeline-item:nth-child(even)::after {
+        left:22px;
+        transform:translate(-50%, -50%);
+    }
+
+     /* hide year labels on mobile */
+    .timeline-year{
+      display:none;                 /* ← the only change */
     }
 }
 

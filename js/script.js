@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeLanguageToggle();
     initializeCarousel();
     initializeScrollEffects();
+    initHeroParallax();
     loadTranslations();
 });
 
@@ -236,19 +237,28 @@ function updateCarousel() {
     }
 }
 
-// Scroll effects and animations
-function initializeScrollEffects() {
-    // Parallax effect for hero background
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        const heroBackground = document.querySelector('.hero-background');
-        
-        if (heroBackground) {
-            heroBackground.style.transform = `translateY(${rate}px)`;
+// ⇢ place it anywhere above the call or at the end of the file
+function initHeroParallax() {
+    const heroBg = document.querySelector('.hero-background');
+    if (!heroBg) return;
+
+    const speed = 0.15;      // tune this value
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const y = window.pageYOffset;
+                heroBg.style.transform = `translateY(${-y * speed}px)`;
+                ticking = false;
+            });
+            ticking = true;
         }
     });
+}
 
+// Scroll effects and animations
+function initializeScrollEffects() {
     // Add scroll-triggered animations for elements without AOS
     const observerOptions = {
         threshold: 0.1,

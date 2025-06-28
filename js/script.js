@@ -237,34 +237,34 @@ function updateCarousel() {
     }
 }
 
-// Hero parallax effect (disabled on mobile to prevent zoom issues)
-function initHeroParallax() {    
-    const heroBg = document.querySelector('.hero-background');
-    if (!heroBg) return;
+function initHeroParallax() {
+  const hero     = document.getElementById('hero');
+  const heroBg   = document.querySelector('.hero-background');
+  if (!hero || !heroBg) return;
 
-    // Check if device is mobile
-    const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    // Disable parallax on mobile devices to prevent zoom issues
-    if (isMobile) {
-        heroBg.style.transform = 'translateY(0px)';
-        return;
+  /* how far we want to move the image: 25 vh = 25% of viewport height */
+  const SHIFT_VH = 25;           // 25 viewport-height units
+  const SHIFT_PX = () => window.innerHeight * SHIFT_VH / 100;
+
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const rect      = hero.getBoundingClientRect();
+        const sectionH  = rect.height;                 // ≈ 100 vh
+        const scrolled  = Math.min(Math.max(-rect.top, 0), sectionH);
+        const progress  = scrolled / sectionH;         // 0 → 1
+        const offsetPx  = -progress * SHIFT_PX();      // 0 → -25 vh
+
+        heroBg.style.transform = `translateY(${offsetPx}px)`;
+        ticking = false;
+      });
+      ticking = true;
     }
-
-    const speed = 0.15;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                const y = window.pageYOffset;
-                heroBg.style.transform = `translateY(${-y * speed}px)`;
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
+  });
 }
+
 
 // Scroll effects and animations
 function initializeScrollEffects() {

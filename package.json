@@ -1,0 +1,12 @@
+{
+  "name": "klapa-ivo-lozica-website",
+  "version": "1.0.0",
+  "description": "Bilingual promotional website for Klapa Ivo Lozica",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -20,6 +20,8 @@ html, body {
 
 body {
     position: relative;
+    overscroll-behavior-x: none;
+    overflow-x: hidden;
 }
 
 /* Color Variables */

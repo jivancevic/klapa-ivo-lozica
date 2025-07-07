@@ -337,27 +337,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Performance optimization: Lazy loading for images
-function initializeLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
 
-        const lazyImages = document.querySelectorAll('img[data-src]');
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-}
-
-// Initialize lazy loading
-document.addEventListener('DOMContentLoaded', initializeLazyLoading);
 
 
 

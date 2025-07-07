@@ -87,7 +87,7 @@ const translations = {
         // Navigation
         nav_brand: "Klapa Ivo Lozica",
         nav_about: "O nama",
-        nav_guest_program: "Gostujući program",
+        nav_guest_program: "Program",
         nav_awards: "Nagrade",
         nav_listen: "Slušaj",
         nav_references: "Reference",
@@ -106,7 +106,7 @@ const translations = {
         about_text_3: "Smješteni u povijesnom gradu Korčuli, nudimo intimne nastupe koji prikazuju ljepotu klapskog pjevanja u najprirodnijoj atmosferi. Naš repertoar uključuje tradicionalne dalmatinske pjesme i suvremene aranžmane koji poštuju naše glazbene korijene.",
 
         // Guest Program Section
-        guest_program_title: "Gostujući program",
+        guest_program_title: "Program",
         guest_program_subtitle: "Prilagođeni nastupi za vaše posebne prilike",
         feature_duration_title: "Fleksibilno trajanje",
         feature_duration_desc: "Nastupi od 20-30 minuta prilagođeni preferencijama vaše publike",

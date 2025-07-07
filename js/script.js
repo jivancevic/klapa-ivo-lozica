@@ -273,27 +273,27 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Error handling for missing images
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('img');
-    
-    images.forEach(img => {
-        img.addEventListener('error', function() {
-            // Create a placeholder for broken images
-            this.style.background = '#f0f0f0';
-            this.style.display = 'flex';
-            this.style.alignItems = 'center';
-            this.style.justifyContent = 'center';
-            this.style.color = '#999';
-            this.style.fontSize = '14px';
-            this.alt = 'Image placeholder';
-        });
-        
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-        });
-    });
-});
+// Delegated event handling for image loading and errors
+// This covers all images including those added dynamically or lazy-loaded
+document.body.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') {
+        // Create a placeholder for broken images
+        const img = e.target;
+        img.style.background = '#f0f0f0';
+        img.style.display = 'flex';
+        img.style.alignItems = 'center';
+        img.style.justifyContent = 'center';
+        img.style.color = '#999';
+        img.style.fontSize = '14px';
+        img.alt = 'Image placeholder';
+    }
+}, true);
+
+document.body.addEventListener('load', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.target.style.opacity = '1';
+    }
+}, true);
 
 // Keyboard navigation support
 document.addEventListener('keydown', function(e) {

@@ -32,6 +32,9 @@
     <!-- AOS Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Glider.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.8/glider.min.css">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
@@ -223,7 +226,8 @@
             </div>
             <div class="references-carousel" data-aos="fade-up" data-aos-delay="200">
                 <div class="carousel-container">
-                    <div class="carousel-track" id="carousel-track">
+                    <div class="glider-contain">
+                        <div class="glider" id="references-glider">
                         <div class="reference-slide">
                             <div class="reference-logo">
                                 <img src="assets/references/black-swan-yacht.jpg" alt="Black Swan Yacht" class="reference-image" loading="lazy">
@@ -252,13 +256,14 @@
                             <h3 data-i18n="ref_4_title">Večernji List</h3>
                             <p data-i18n="ref_4_quote">"The audience warmly greeted them with applause and expressed their wish to be delighted by their performance in Orašje again."</p>
                         </div>
+                        </div>
+                        <button aria-label="Previous" class="glider-prev carousel-btn carousel-prev" id="carousel-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button aria-label="Next" class="glider-next carousel-btn carousel-next" id="carousel-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <button class="carousel-btn carousel-prev" id="carousel-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-btn carousel-next" id="carousel-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -303,6 +308,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.8/glider.min.js"></script>
     <script src="js/translations.js"></script>
     <script src="js/script.js"></script>
 </body>

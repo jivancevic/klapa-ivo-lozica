@@ -14,8 +14,13 @@ html, body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    overflow-y: auto;
     width: 100%;
     max-width: 100%;
+}
+
+[data-aos] {
+  overflow-anchor: none;  /* Prevent scroll jump */
 }
 
 body {
@@ -182,18 +187,28 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 125vh;   
-    background-image: url('../assets/hero-front.webp');
-    background-size: cover;
-    background-position: center top;
-    background-attachment: scroll;
-    will-change: transform;
-    z-index: -2;
+/* --- HERO BACKGROUND --- */
+.hero-background{
+  /* the picture is 5985 px tall; we need it 25 % taller than the viewport
+     so we can slide 20 % of its own height (= 25 % of vh) */
+  position:absolute; inset:0;               /* full section */
+  height:125vh; top:-12.5vh;                /* exposes top 80 % at load */
+  background:url('../assets/hero-front.webp') center top / 100% auto no-repeat;
+  will-change:transform;
+  z-index:-2;
+}
+
+/* VERY WIDE screens → show full width, crop top/bottom only            */
+@media (min-aspect-ratio: 3/1){
+  .hero-background{background-size:100% auto;}
+}
+
+/* VERY TALL screens → fit full height, crop left/right only            */
+@media (max-aspect-ratio: 1/2){
+  .hero-background{
+    background-size:auto 100%;
+    left:50%; transform:translateX(-50%);   /* centre horizontally    */
+  }
 }
 
 .hero-overlay {
@@ -551,23 +566,34 @@ section {
     margin: 0 auto;
 }
 
-.carousel-container {
+.glider-contain {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
 }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease;
+.glider {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .reference-slide {
-    min-width: 100%;
     background: var(--white);
     padding: 3rem 2rem;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+/* Override Glider.js default styles to match our design */
+.glider-track {
+    width: 100%;
+}
+
+.glider > * {
+    user-select: none;
+    outline: none;
 }
 
 .reference-logo {

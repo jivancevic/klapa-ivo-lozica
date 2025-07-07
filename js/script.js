@@ -1,5 +1,4 @@
 // Global variables
-let currentSlide = 0;
 let currentLanguage = 'en';
 
 // Initialize everything when DOM is loaded
@@ -164,105 +163,92 @@ function loadTranslations() {
     }
 }
 
-// Carousel functionality
+// Carousel functionality using Glider.js
 function initializeCarousel() {
-    const carouselTrack = document.getElementById('carousel-track');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
-    const slides = document.querySelectorAll('.reference-slide');
-    
-    if (!carouselTrack || !slides.length) return;
+    const gliderElement = document.getElementById('references-glider');
+    if (!gliderElement) return;
 
-    const totalSlides = slides.length;
+    // Initialize Glider
+    const glider = new Glider(gliderElement, {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        draggable: true,
+        scrollLock: true,
+        arrows: {
+            prev: '#carousel-prev',
+            next: '#carousel-next'
+        },
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
 
-    // Previous button
-    if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-    }
-
-    // Next button
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        });
-    }
-
-    // Auto-advance carousel
-    setInterval(function() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
+    // Auto-advance carousel every 5 seconds
+    let autoSlide = setInterval(() => {
+        if (glider) {
+            const currentSlide = glider.slide;
+            const totalSlides = glider.slides.length;
+            const nextSlide = (currentSlide + 1) % totalSlides;
+            glider.scrollItem(nextSlide);
+        }
     }, 5000);
 
-    // Touch/swipe support for mobile
-    let startX = 0;
-    let endX = 0;
-
-    carouselTrack.addEventListener('touchstart', function(e) {
-        startX = e.touches[0].clientX;
+    // Pause auto-advance on hover
+    gliderElement.addEventListener('mouseenter', () => {
+        clearInterval(autoSlide);
     });
 
-    carouselTrack.addEventListener('touchend', function(e) {
-        endX = e.changedTouches[0].clientX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = startX - endX;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left - next slide
-                currentSlide = (currentSlide + 1) % totalSlides;
-            } else {
-                // Swipe right - previous slide
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    // Resume auto-advance when not hovering
+    gliderElement.addEventListener('mouseleave', () => {
+        autoSlide = setInterval(() => {
+            if (glider) {
+                const currentSlide = glider.slide;
+                const totalSlides = glider.slides.length;
+                const nextSlide = (currentSlide + 1) % totalSlides;
+                glider.scrollItem(nextSlide);
             }
-            updateCarousel();
-        }
-    }
+        }, 5000);
+    });
 }
 
-// Update carousel position
-function updateCarousel() {
-    const carouselTrack = document.getElementById('carousel-track');
-    if (carouselTrack) {
-        const translateX = -currentSlide * 100;
-        carouselTrack.style.transform = `translateX(${translateX}%)`;
-    }
-}
+/* —— HERO PARALLAX —— */
+function initHeroParallax(){
+  const hero   = document.getElementById('hero');
+  const bg     = document.querySelector('.hero-background');
+  if (!hero || !bg) return;
 
-function initHeroParallax() {
-  const hero     = document.getElementById('hero');
-  const heroBg   = document.querySelector('.hero-background');
-  if (!hero || !heroBg) return;
-
-  /* how far we want to move the image: 25 vh = 25% of viewport height */
-  const SHIFT_VH = 25;           // 25 viewport-height units
-  const SHIFT_PX = () => window.innerHeight * SHIFT_VH / 100;
+  const SHIFT = 20;   // move picture by 20 vh ( = 80 % ⇋ 80 % rule )
 
   let ticking = false;
-
   window.addEventListener('scroll', () => {
-    if (!ticking) {
+    if (!ticking){
       requestAnimationFrame(() => {
-        const rect      = hero.getBoundingClientRect();
-        const sectionH  = rect.height;                 // ≈ 100 vh
-        const scrolled  = Math.min(Math.max(-rect.top, 0), sectionH);
-        const progress  = scrolled / sectionH;         // 0 → 1
-        const offsetPx  = -progress * SHIFT_PX();      // 0 → -25 vh
+        /* scroll progress inside the hero section 0 … 1 */
+        const r   = hero.getBoundingClientRect();
+        const p   = Math.min(Math.max(-r.top,0), r.height) / r.height;
 
-        heroBg.style.transform = `translateY(${offsetPx}px)`;
+        /* translate from   0 vh  →  -20 vh */
+        bg.style.transform = `translateY(${-p*SHIFT}vh)`;
         ticking = false;
       });
       ticking = true;
     }
   });
 }
+
 
 
 
@@ -281,9 +267,6 @@ function scrollToSection(sectionId) {
 
 // Handle window resize
 window.addEventListener('resize', function() {
-    // Reset carousel on resize
-    updateCarousel();
-    
     // Refresh AOS on resize
     if (typeof AOS !== 'undefined') {
         AOS.refresh();

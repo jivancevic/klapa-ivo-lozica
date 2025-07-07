@@ -80,18 +80,16 @@ This is a bilingual promotional website for Klapa Ivo Lozica, a Croatian acapell
 
 ## Deployment Strategy
 
-### Optimized Node.js Server
-- **Production Server**: Custom Node.js HTTP server for fast health checks
-- **Health Check Endpoint**: `/health` responds in <50ms for deployment systems
-- **Static File Serving**: Efficient serving of HTML, CSS, JS, and image assets
-- **Graceful Shutdown**: Proper SIGTERM handling for deployment environments
-- **Performance**: Root endpoint responds in ~30ms for quick health checks
+### Static Hosting Compatible
+- **Target Platforms**: Netlify, GitHub Pages, Vercel, or any static hosting
+- **No Build Process**: Direct file deployment without compilation
+- **Asset Management**: Placeholder system allows easy image replacement
+- **CDN Friendly**: All assets can be easily moved to CDN if needed
 
 ### File Structure
 ```
 /
 ├── index.html (main entry point)
-├── server.js (optimized Node.js server)
 ├── css/styles.css (all styling)
 ├── js/
 │   ├── script.js (main functionality)
@@ -108,7 +106,7 @@ This is a bilingual promotional website for Klapa Ivo Lozica, a Croatian acapell
 ## Changelog
 
 - June 26, 2025: Initial setup
-- June 28, 2025: Fixed deployment health check issues by replacing Python HTTP server with optimized Node.js server for faster response times (<50ms)
+- June 28, 2025: Reverted to vanilla JavaScript setup, removed Node.js dependencies for pure static hosting
 
 ## User Preferences
 

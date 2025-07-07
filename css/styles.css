@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 100dvh;
     position: relative;
     display: flex;
     align-items: center;
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
   /* the picture is 5985 px tall; we need it 25 % taller than the viewport
      so we can slide 20 % of its own height (= 25 % of vh) */
   position:absolute; inset:0;               /* full section */
-  height:125vh; top:-12.5vh;                /* exposes top 80 % at load */
+  height:125dvh; top:-12.5dvh;                /* exposes top 80 % at load */
   background:url('../assets/hero-front.webp') center top / 100% auto no-repeat;
   will-change:transform;
   z-index:-2;
@@ -788,6 +788,7 @@ section {
     .nav-menu.active{
       transform:translateX(0);       /* slide IN */
     }
+
     
     .hero-title {
         font-size: 2.5rem;
@@ -930,7 +931,7 @@ img {
     .mobile .hero-background {
         transform: none;
         top: 0;
-        height: 100vh;
+        height: 100dvh;
         background-attachment: scroll;
     }
     

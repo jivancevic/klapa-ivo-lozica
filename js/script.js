@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeLanguageToggle();
     initializeCarousel();
-    initializeScrollEffects();
     initHeroParallax();
     loadTranslations();
 });
@@ -266,28 +265,7 @@ function initHeroParallax() {
 }
 
 
-// Scroll effects and animations
-function initializeScrollEffects() {
-    // Add scroll-triggered animations for elements without AOS
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements that need scroll animations (excluding timeline items as they use AOS)
-    const elementsToObserve = document.querySelectorAll('.feature-card:not([data-aos])');
-    elementsToObserve.forEach(el => {
-        observer.observe(el);
-    });
-}
 
 // Utility function to scroll to a specific section
 function scrollToSection(sectionId) {
@@ -381,22 +359,7 @@ function initializeLazyLoading() {
 // Initialize lazy loading
 document.addEventListener('DOMContentLoaded', initializeLazyLoading);
 
-// Smooth reveal animation for sections
-function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    
-    reveals.forEach(reveal => {
-        const windowHeight = window.innerHeight;
-        const revealTop = reveal.getBoundingClientRect().top;
-        const revealPoint = 150;
-        
-        if (revealTop < windowHeight - revealPoint) {
-            reveal.classList.add('active');
-        }
-    });
-}
 
-window.addEventListener('scroll', revealOnScroll);
 
 // Add loading state management
 window.addEventListener('load', function() {

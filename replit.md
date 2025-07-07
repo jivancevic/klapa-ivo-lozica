@@ -80,16 +80,19 @@ This is a bilingual promotional website for Klapa Ivo Lozica, a Croatian acapell
 
 ## Deployment Strategy
 
-### Static Hosting Compatible
-- **Target Platforms**: Netlify, GitHub Pages, Vercel, or any static hosting
-- **No Build Process**: Direct file deployment without compilation
-- **Asset Management**: Placeholder system allows easy image replacement
-- **CDN Friendly**: All assets can be easily moved to CDN if needed
+### Node.js Server for Deployment
+- **Production Server**: Simple Node.js HTTP server for Replit deployment
+- **Health Check Endpoint**: `/health` responds quickly for deployment systems
+- **Static File Serving**: Efficient serving of HTML, CSS, JS, and image assets
+- **Graceful Shutdown**: Proper SIGTERM handling for deployment environments
+- **Port Configuration**: Runs on port 3000 locally, respects PORT environment variable
 
 ### File Structure
 ```
 /
 ├── index.html (main entry point)
+├── server.js (Node.js server for deployment)
+├── package.json (Node.js configuration)
 ├── css/styles.css (all styling)
 ├── js/
 │   ├── script.js (main functionality)
@@ -106,7 +109,7 @@ This is a bilingual promotional website for Klapa Ivo Lozica, a Croatian acapell
 ## Changelog
 
 - June 26, 2025: Initial setup
-- June 28, 2025: Reverted to vanilla JavaScript setup, removed Node.js dependencies for pure static hosting
+- June 28, 2025: Added Node.js server for deployment compatibility while maintaining vanilla JavaScript frontend
 
 ## User Preferences
 

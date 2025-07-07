@@ -1,6 +1,31 @@
-language = "html"
-run      = "python -m http.server 5000"
+# .replit
+run = "python3 -m http.server 3000"
+modules = ["nodejs-20"]
+[deployment]
+  run = ["python3", "-m", "http.server", "3000"]
+  ignorePorts = true
 
 [[ports]]
-localPort   = 5000
+localPort = 3000
 externalPort = 80
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Server"
+
+[[workflows.workflow]]
+name = "Server"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node server.js"
+waitForPort = 3000

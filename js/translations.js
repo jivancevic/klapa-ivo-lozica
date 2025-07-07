@@ -60,12 +60,14 @@ const translations = {
         // References Section
         references_title: "References",
         references_subtitle: "Trusted by venues and audiences across Croatia",
-        ref_1_title: "Tourist Board Korčula",
-        ref_1_quote: "Exceptional performances that showcase the authentic spirit of Dalmatian culture",
-        ref_2_title: "Hotel Korsal",
-        ref_2_quote: "Our guests are always moved by the beautiful harmonies and cultural presentation",
-        ref_3_title: "Omiš Festival",
-        ref_3_quote: "Gold Shield winners who represent the finest tradition of Dalmatian klapa singing",
+        ref_1_title: "Black Swan Yacht",
+        ref_1_quote: "Our guests are always moved by the beautiful harmonies and cultural presentation",
+        ref_2_title: "Slobodna Dalmacija",
+        ref_2_quote: "a detonation of youth, courage, enthusiasm, but also respect for the strict klapa tradition",
+        ref_3_title: "Marko Polo Festival",
+        ref_3_quote: "The energy and synergy they possess are something special, primal, and brilliant.",
+        ref_4_title: "Večernji List",
+        ref_4_quote: "The audience warmly greeted them with applause and expressed their wish to be delighted by their performance in Orašje again.",
 
         // Contact Section
         contact_title: "Book Your Performance",
@@ -135,12 +137,14 @@ const translations = {
         // References Section
         references_title: "Reference",
         references_subtitle: "Pouzdani od strane prostora i publike diljem Hrvatske",
-        ref_1_title: "Turistička zajednica Korčula",
-        ref_1_quote: "Iznimni nastupi koji prikazuju autentični duh dalmatinske kulture",
-        ref_2_title: "Hotel Korsal",
-        ref_2_quote: "Naši gosti su uvijek dirnuti prekrasnim harmonijama i kulturnim predstavljanjem",
-        ref_3_title: "Festival u Omišu",
-        ref_3_quote: "Dobitnici Zlatnog štita koji predstavljaju najfiniju tradiciju dalmatinskog klapskog pjevanja",
+        ref_1_title: "Black Swan Yacht",
+        ref_1_quote: "Our guests are always moved by the beautiful harmonies and cultural presentation",
+        ref_2_title: "Slobodna Dalmacija",
+        ref_2_quote: "a detonation of youth, courage, enthusiasm, but also respect for the strict klapa tradition",
+        ref_3_title: "Marko Polo Festival",
+        ref_3_quote: "The energy and synergy they possess are something special, primal, and brilliant.",
+        ref_4_title: "Večernji List",
+        ref_4_quote: "The audience warmly greeted them with applause and expressed their wish to be delighted by their performance in Orašje again.",
 
         // Contact Section
         contact_title: "Rezervirajte svoj nastup",

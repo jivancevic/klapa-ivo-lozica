@@ -842,10 +842,12 @@ section {
       padding-left: 70px;             /* 33-px dot + 15-20 px gap */
     }
 
-    /* perfectly centred dot */
-    .timeline-item::after, .timeline-item:nth-child(even)::after {
-        left:22px;
-        transform:translate(-50%, -50%);
+    /* perfectly centred dot - override both odd and even items */
+    .timeline-item::after, 
+    .timeline-item:nth-child(even)::after,
+    .timeline-item:nth-child(odd)::after {
+        left: 20px !important;
+        transform: translate(-50%, -50%) !important;
     }
 
      /* hide year labels on mobile */

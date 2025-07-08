@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAOS();
     initializeNavigation();
     initializeLanguageToggle();
+    initializeParallax();
     initializeCarousel();
-    initHeroParallax();
     loadTranslations();
 });
 
@@ -19,7 +19,7 @@ function initializeAOS() {
             easing: 'ease-in-out',
             once: true,
             mirror: false,
-            offset: 100
+            offset: 200
         });
     }
 }
@@ -163,6 +163,27 @@ function loadTranslations() {
     }
 }
 
+function initializeParallax() {
+    const hero = document.getElementById('hero');
+    const bg   = hero.querySelector('.hero-background');
+    const SPEED = 0.35;          // 0 = still, 1 = normal scroll speed
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                /* distance the user has scrolled past the section’s top */
+                const rect     = hero.getBoundingClientRect();
+                const passed   = Math.min(Math.max(-rect.top, 0), rect.height);
+                /* move the bg only a fraction of that distance */
+                bg.style.transform = `translateY(${passed * SPEED}px)`;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+}
+
 // Carousel functionality using Glider.js
 function initializeCarousel() {
     const gliderElement = document.getElementById('references-glider');
@@ -223,35 +244,6 @@ function initializeCarousel() {
         }, 5000);
     });
 }
-
-/* —— HERO PARALLAX —— */
-function initHeroParallax(){
-  const hero   = document.getElementById('hero');
-  const bg     = document.querySelector('.hero-background');
-  if (!hero || !bg) return;
-
-  const SHIFT = 20;   // move picture by 20 vh ( = 80 % ⇋ 80 % rule )
-
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking){
-      requestAnimationFrame(() => {
-        /* scroll progress inside the hero section 0 … 1 */
-        const r   = hero.getBoundingClientRect();
-        const p   = Math.min(Math.max(-r.top,0), r.height) / r.height;
-
-        /* translate from   0 vh  →  -20 vh */
-        bg.style.transform = `translateY(${-p*SHIFT}vh)`;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-}
-
-
-
-
 
 // Utility function to scroll to a specific section
 function scrollToSection(sectionId) {
@@ -321,9 +313,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 
-
-
-
 // Add loading state management
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
@@ -369,8 +358,6 @@ function updateSEOTags(lang) {
         }
     });
 }
-
-
 
 // Export functions for global access
 window.scrollToSection = scrollToSection;

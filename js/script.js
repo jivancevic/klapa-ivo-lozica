@@ -212,7 +212,7 @@ function initializeCarousel() {
             const nextSlide = (currentSlide + 1) % totalSlides;
             glider.scrollItem(nextSlide);
         }
-    }, 5000);
+    }, 3000);
 
     // Pause auto-advance on hover
     const carouselContainer = document.querySelector('.references-carousel');

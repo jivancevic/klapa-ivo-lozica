@@ -11,7 +11,6 @@ html, body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
-    overflow-y: auto;
     width: 100%;
     max-width: 100%;
 }
@@ -27,8 +26,27 @@ body {
 }
 
 [data-aos] {
+    contain: layout;  /* 👈 contains layout shifts */
+    backface-visibility: hidden;
+    transform: translateZ(0); /* trigger GPU compositing */
+    min-height: 1px;
+}
+
+[data-aos]:not(.timeline-item) {
     overflow: hidden;
     overflow-anchor: none;  /* Prevent scroll jump */
+}
+
+/* let the gallery tiles pop out while keeping other AOS sections clipped */
+.about-gallery[data-aos]{
+    contain: none;         /* ← remove paint containment      */
+    overflow: visible;     /* ← and allow overflow            */
+}
+
+/* let timeline cards draw outside their box again */
+.timeline-item[data-aos]{
+    contain: none;        /* or `contain: paint` if you still want GPU boost */
+    overflow: visible;    /* be explicit */
 }
 
 /* Color Variables */
@@ -37,10 +55,13 @@ body {
     --white: #FFFFFF;
     --black: #000000;
     --red: #E53935;
+    --dark-red: #800001;
     --light-gray: #f8f9fa;
     --dark-gray: #666;
+    --overlay-dark-little: rgba(0, 0, 0, 0.2);
     --overlay-dark: rgba(0, 0, 0, 0.4);
     --overlay-blue: rgba(77, 179, 255, 0.3);
+    --overlay-white: rgba(255, 255, 255, 0.8);
 }
 
 /* Typography */
@@ -181,7 +202,7 @@ img {
 
 /* Section Styles */
 section {
-    padding: 5rem 0;
+    padding: 3rem 0;
     width: 100%;
     overflow-x: hidden;
     scroll-margin-top: 80px;
@@ -234,7 +255,7 @@ section {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,var(--overlay-dark));
+    background: linear-gradient(135deg,var(--overlay-dark-little));
     z-index: 0;
 }
 
@@ -288,6 +309,11 @@ section {
     background: var(--light-gray);
 }
 
+/* let the gallery tiles pop out while keeping other AOS sections clipped */
+.about-gallery[data-aos]{
+    overflow: visible;        /* turn the clipping back off only here */
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -310,7 +336,7 @@ section {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .gallery-item {
@@ -324,13 +350,39 @@ section {
 
 .gallery-item:hover {
     transform: scale(1.05);
+    z-index:2;
 }
-
 
 
 /* Guest Program Section */
 .guest-program {
-    background: var(--white);
+    position:relative;
+    background:url("../assets/program-background.webp") center/cover no-repeat;
+    color:var(--white);
+}
+
+.guest-program::before {
+    content: "";
+    position: absolute; 
+    inset: 0;
+    background: linear-gradient(135deg,var(--overlay-dark));
+    z-index: 0; 
+    pointer-events: none;
+}
+
+.guest-program > .container {
+    position:relative;                /* lifts real content */
+    z-index:1;
+}
+
+.guest-program .section-title {
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.guest-program .section-subtitle {
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .program-features {
@@ -341,7 +393,7 @@ section {
 }
 
 .feature-card {
-    background: var(--light-gray);
+    background: var(--overlay-white);
     padding: 2.5rem 2rem;
     border-radius: 15px;
     text-align: center;
@@ -421,7 +473,7 @@ section {
 }
 
 .timeline-item {
-    padding: 2rem 0;
+    padding: 1rem 0;
     position: relative;
     background-color: inherit;
     width: 50%;
@@ -501,7 +553,7 @@ section {
 
 /* Listen Section */
 .listen {
-    background: var(--red);
+    background: var(--dark-red);
     color: var(--white);
 }
 

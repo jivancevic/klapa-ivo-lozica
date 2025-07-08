@@ -265,7 +265,7 @@ section {
 
 .hero-cta {
     padding: 1rem 2.5rem;
-    font: 400 1.1rem/1 'Montserrat', sans-serif;
+    font: 450 1.1rem/1 'Montserrat', sans-serif;
     background: transparent;
     border: 2px solid var(--red);
     border-radius: 5px;
@@ -685,6 +685,16 @@ section {
 
 
 
+/* Medium screen adjustments for timeline */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .timeline-item::after,
+    .timeline-item:nth-child(even)::after {
+        width: 20px;
+        height: 20px;
+        border: 3px solid var(--white);
+    }
+}
+
 /* Contact & Footer Combined Section */
 .contact-footer {
     position: relative;
@@ -892,6 +902,22 @@ section {
         height: 10px;
     }
     
+    /* Ensure timeline spine stays at 20px on smaller screens */
+    .timeline::before {
+        left: 20px !important;
+    }
+    
+    /* Ensure all timeline dots align with spine on smaller screens */
+    .timeline-item::after, 
+    .timeline-item:nth-child(even)::after,
+    .timeline-item:nth-child(odd)::after {
+        left: 20px !important;
+        transform: translate(-50%, -50%) !important;
+        width: 18px !important;
+        height: 18px !important;
+        border: 2px solid var(--white) !important;
+    }
+    
     .contact-details {
         align-items: flex-start;
     }
@@ -919,6 +945,9 @@ section {
     .timeline-item:nth-child(odd)::after {
         left: 20px !important;
         transform: translate(-50%, -50%) !important;
+        width: 20px !important;
+        height: 20px !important;
+        border: 3px solid var(--white) !important;
     }
 
      /* hide year labels on mobile */

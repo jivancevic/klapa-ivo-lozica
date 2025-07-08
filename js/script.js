@@ -19,7 +19,7 @@ function initializeAOS() {
             easing: 'ease-in-out',
             once: true,
             mirror: false,
-            offset: 200
+            offset: -300
         });
     }
 }
@@ -184,12 +184,13 @@ function initializeParallax() {
     });
 }
 
-// Carousel functionality using Glider.js
+// Carousel functionality using Glider.js with pagination dots
 function initializeCarousel() {
     const gliderElement = document.getElementById('references-glider');
-    if (!gliderElement) return;
+    const dotsContainer = document.getElementById('carousel-dots');
+    if (!gliderElement || !dotsContainer) return;
 
-    // Initialize Glider
+    // Initialize Glider with dots
     const glider = new Glider(gliderElement, {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -199,27 +200,13 @@ function initializeCarousel() {
             prev: '#carousel-prev',
             next: '#carousel-next'
         },
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+        dots: '#carousel-dots',
+        rewind: true
     });
 
     // Auto-advance carousel every 5 seconds
     let autoSlide = setInterval(() => {
-        if (glider) {
+        if (glider && glider.slides && glider.slides.length > 0) {
             const currentSlide = glider.slide;
             const totalSlides = glider.slides.length;
             const nextSlide = (currentSlide + 1) % totalSlides;
@@ -228,21 +215,24 @@ function initializeCarousel() {
     }, 5000);
 
     // Pause auto-advance on hover
-    gliderElement.addEventListener('mouseenter', () => {
-        clearInterval(autoSlide);
-    });
+    const carouselContainer = document.querySelector('.references-carousel');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
 
-    // Resume auto-advance when not hovering
-    gliderElement.addEventListener('mouseleave', () => {
-        autoSlide = setInterval(() => {
-            if (glider) {
-                const currentSlide = glider.slide;
-                const totalSlides = glider.slides.length;
-                const nextSlide = (currentSlide + 1) % totalSlides;
-                glider.scrollItem(nextSlide);
-            }
-        }, 5000);
-    });
+        // Resume auto-advance when not hovering
+        carouselContainer.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => {
+                if (glider && glider.slides && glider.slides.length > 0) {
+                    const currentSlide = glider.slide;
+                    const totalSlides = glider.slides.length;
+                    const nextSlide = (currentSlide + 1) % totalSlides;
+                    glider.scrollItem(nextSlide);
+                }
+            }, 5000);
+        });
+    }
 }
 
 // Utility function to scroll to a specific section

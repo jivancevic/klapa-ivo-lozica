@@ -550,6 +550,17 @@ section {
     line-height: 1.6;
 }
 
+/* Medium screen adjustments for timeline */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .timeline-item::after,
+    .timeline-item:nth-child(even)::after {
+        width: 20px;
+        height: 20px;
+        border: 3px solid var(--white);
+    }
+}
+
+
 
 /* Listen Section */
 .listen {
@@ -585,6 +596,7 @@ section {
     color: rgba(255, 255, 255, 0.8);
     font-style: italic;
 }
+
 
 
 
@@ -736,15 +748,7 @@ section {
 
 
 
-/* Medium screen adjustments for timeline */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .timeline-item::after,
-    .timeline-item:nth-child(even)::after {
-        width: 20px;
-        height: 20px;
-        border: 3px solid var(--white);
-    }
-}
+
 
 /* Contact & Footer Combined Section */
 .contact-footer {

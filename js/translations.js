@@ -29,7 +29,7 @@ const translations = {
     about_subtitle:
       "Preserving the authentic spirit of Dalmatian musical tradition",
     about_text_1:
-      "Klapa Ivo Lozica carries forward the rich musical heritage of Dalmatia, representing the authentic spirit of traditional Croatian acapella singing. Founded in 2019, our klapa honors the legacy of Ivo Lozica and the historical Koludrt tradition dating back to 1972.",
+      "Klapa Ivo Lozica carries forward the rich musical heritage of Dalmatia, representing the authentic spirit of traditional Croatian a cappella singing. Recognized by UNESCO as an Intangible Cultural Heritage of Humanity, klapa singing reflects centuries of coastal tradition and community. Founded in 2019, our klapa honors the legacy of Ivo Lozica and the historical Koludrt tradition dating back to 1972.",
     about_text_2:
       "Our performances capture the essence of Dalmatian culture, featuring traditional songs that have been passed down through generations. Each performance is a journey through the musical soul of Croatia, delivered with passion and authenticity that resonates with audiences of all backgrounds.",
     about_text_3:
@@ -127,11 +127,11 @@ const translations = {
     about_title: "O Klapi Ivo Lozica",
     about_subtitle: "Čuvamo autentični duh dalmatinske glazbene tradicije",
     about_text_1:
-      "Klapa Ivo Lozica prenosi bogatu glazbenu baštinu Dalmacije, predstavljajući autentični duh tradicionalnog hrvatskog a cappella pjevanja. Osnovana 2019. godine, naša klapa časti nasljeđe Ive Lozice i povijesnu Koludrt tradiciju koja seže u 1972. godinu.",
+      "Klapa Ivo Lozica njeguje bogatu glazbenu baštinu Dalmacije, utjelovljujući autentični duh tradicionalnog hrvatskog a cappella pjevanja. Klapsko je pjevanje uvršteno na UNESCO-ov popis nematerijalne kulturne baštine čovječanstva, što potvrđuje njegovu duboku ukorijenjenost u obalnoj tradiciji i zajednici. Osnovana 2019. godine, naša klapa odaje počast Ivi Lozici i povijesnoj tradiciji klape Koludrt, koja seže sve do 1972. godine.",
     about_text_2:
-      "Naši nastupi zarobljavaju bit dalmatinske kulture, prikazujući tradicionalne pjesme koje su prenošene kroz generacije. Svaki nastup je putovanje kroz glazbenu dušu Hrvatske, izveden sa strašću i autentičnošću koja odjekuje u publici svih uzrasta.",
+      "Naši nastupi dočaravaju bit dalmatinske kulture, donoseći tradicionalne pjesme koje su se prenosile s koljena na koljeno. Svaka izvedba je glazbeno putovanje kroz dušu Hrvatske, prožeto strašću i autentičnošću koja dirne publiku svih uzrasta.",
     about_text_3:
-      "Smješteni u povijesnom gradu Korčuli, nudimo intimne nastupe koji prikazuju ljepotu klapskog pjevanja u najprirodnijoj atmosferi. Naš repertoar uključuje tradicionalne dalmatinske pjesme i suvremene aranžmane koji poštuju naše glazbene korijene.",
+      "SSa sjedištem u povijesnoj Korčuli, nudimo intimne nastupe koji prikazuju ljepotu klapskog pjevanja u njegovu najprirodnijem okruženju. Naš repertoar obuhvaća i tradicionalne dalmatinske napjeve i suvremene aranžmane koji s poštovanjem njeguju naše glazbene korijene.",
 
     // Guest Program Section
     guest_program_title: "Program",
@@ -178,17 +178,20 @@ const translations = {
     references_subtitle:
       "Pouzdani od strane prostora i publike diljem Hrvatske",
     ref_1_title: "Black Swan Yacht",
-    ref_1_quote: "Naši gosti uvijek su dirnuti prekrasnim harmonijama i kulturnom prezentacijom.",
-    
+    ref_1_quote:
+      "Naši gosti uvijek su dirnuti prekrasnim harmonijama i kulturnom prezentacijom.",
+
     ref_2_title: "Slobodna Dalmacija",
-    ref_2_quote: "detonacija mladosti, hrabrosti, entuzijazma, ali i poštovanja prema strogim klapskim pravilima.",
-    
+    ref_2_quote:
+      "detonacija mladosti, hrabrosti, entuzijazma, ali i poštovanja prema strogim klapskim pravilima.",
+
     ref_3_title: "Marko Polo Festival",
-    ref_3_quote: "Energija i sinergija koju posjeduju nešto je posebno, iskonsko i briljantno.",
-    
+    ref_3_quote:
+      "Energija i sinergija koju posjeduju nešto je posebno, iskonsko i briljantno.",
+
     ref_4_title: "Večernji List",
-    ref_4_quote: "Publika ih je srdačno pozdravila pljeskom i izrazila želju da ih ponovno vidi u Orašju.",
-      
+    ref_4_quote:
+      "Publika ih je srdačno pozdravila pljeskom i izrazila želju da ih ponovno vidi u Orašju.",
 
     // Contact Section
     contact_title: "Rezervirajte svoj nastup",

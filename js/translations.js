@@ -131,7 +131,7 @@ const translations = {
     about_text_2:
       "Naši nastupi dočaravaju bit dalmatinske kulture, donoseći tradicionalne pjesme koje su se prenosile s koljena na koljeno. Svaka izvedba je glazbeno putovanje kroz dušu Hrvatske, prožeto strašću i autentičnošću koja dirne publiku svih uzrasta.",
     about_text_3:
-      "SSa sjedištem u povijesnoj Korčuli, nudimo intimne nastupe koji prikazuju ljepotu klapskog pjevanja u njegovu najprirodnijem okruženju. Naš repertoar obuhvaća i tradicionalne dalmatinske napjeve i suvremene aranžmane koji s poštovanjem njeguju naše glazbene korijene.",
+      "Sa sjedištem u povijesnoj Korčuli, nudimo intimne nastupe koji prikazuju ljepotu klapskog pjevanja u njegovu najprirodnijem okruženju. Naš repertoar obuhvaća i tradicionalne dalmatinske napjeve i suvremene aranžmane koji s poštovanjem njeguju naše glazbene korijene.",
 
     // Guest Program Section
     guest_program_title: "Program",
